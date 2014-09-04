@@ -1,0 +1,16 @@
+<div class="col-xs-12 top-buffer">
+          <% unless user_signed_in? %>
+            
+              <%= link_to  new_user_session_path do %>
+                <button class="btn btn-sm btn-default">Sign in</button>
+              <% end -%>
+              /
+              <%= link_to new_user_registration_path do %>
+                <button class="btn btn-sm btn-default">Sign up</button>
+              <% end -%>
+            
+          <% else %>
+            <%= render 'shared/user_dropdown' %>
+              
+          <% end %>
+</div>
