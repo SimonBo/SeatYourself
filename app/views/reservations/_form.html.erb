@@ -12,12 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
+    <%= f.label :restaurant  %>
+    <%= collection_select(:reservation, :restaurant_id, Restaurant.all, :id, :name) %>
   <div class="field">
-    <%= f.label :restaurant_id %><br>
-    <%= f.text_field :restaurant_id %>
+    <%= f.label :party_size %>
+    <%= f.number_field :party_size, in: 1.0..20.0 %>
   </div>
   <div class="actions">
     <%= f.submit %>

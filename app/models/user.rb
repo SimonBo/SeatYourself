@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :reservations
    
+  def to_s
+    "#{email}"
+  end
 end

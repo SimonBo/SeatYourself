@@ -4,6 +4,7 @@
 </button>
 
 <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+  <li role="presentation"><a role="menuitem" tabindex="-1"><%= link_to 'Add review', new_review_path %></a></li>
   <li role="presentation"><a role="menuitem" tabindex="-1"><%= link_to 'Edit account', edit_user_registration_path %></a></li>
   <li role="presentation"><a role="menuitem" tabindex="-1"><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></a></li>
   

@@ -14,16 +14,16 @@
 
     <main role="main" class="container">
       <div class="row">
-        <div class="col-sm-8 main-content top-buffer">
+        <div class="col-sm-8 main-content top-buffer-80">
           <%= render 'layouts/messages' %>
           <%= yield %>
         </div><!-- End of blog-main -->
        
-    <div class="col-sm-4  top-buffer">
-      <div class="text-center">
+    <div class="col-sm-4  top-buffer text-center">
         <%= render 'shared/user_manage'  %>
-       
-      </div>
+        <%= link_to new_reservation_path do %>
+          <button type='button' class='btn btn-default'>Seat Yourself!</button>
+        <% end %>
     </div>
    </div> <!-- end of row -->
       </main>
