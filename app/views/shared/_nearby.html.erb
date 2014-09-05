@@ -1,0 +1,7 @@
+<h1>Near me now: </h1>
+
+<ul>
+<% for location in current_user.nearbys(10) %>
+  <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)</li>
+<% end %>
+</ul>

@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :reservations
+
+  geocoded_by :ip_address
+  after_validation :geocode
    
   def to_s
     "#{email}"

@@ -5,7 +5,13 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
+    
+  if params[:search].present?
+    @restaurants = Restaurant.near(params[:search], 50)
+  else
     @restaurants = Restaurant.order(sort_column + " " + sort_direction)
+  end
+
   end
 
   # GET /restaurants/1
@@ -77,6 +83,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :address)
+      params.require(:restaurant).permit(:name, :address, :latitude, :longitude, :cuisine_ids => [])
     end
 end

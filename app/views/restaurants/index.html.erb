@@ -1,10 +1,17 @@
 <h1>Restaurants</h1>
 
+<%= form_tag restaurants_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search Near", :name => nil %>
+<% end %>
+
   <table>
     <tr>
       <th><%= sortable "Name", :sort => "name" %></th>
       <th><%= sortable "Address", :sort => "address" %></th>
       <th>Reviews</th>
+      <th>Booked by: </th>
      
     </tr>
     <% @restaurants.each do |restaurant| %>
@@ -12,7 +19,7 @@
         <td><%= restaurant.name %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.reviews.count %></td>
-      
+        <td><%= pluralize restaurant.reservations.count, 'person'  %></td>
 
 
         <td><%= link_to 'Show', restaurant %></td>

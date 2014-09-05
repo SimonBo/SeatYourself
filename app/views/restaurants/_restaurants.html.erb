@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <th><%= sortable "Name", :sort => "name" %></th>
+    <th><%= sortable "Address", :sort => "address" %></th>
+    <th>Reviews</th>
+    <th><%= sortable "Cuisines", :sort => "cuisines" %></th>
+    <th>Booked by:</th>
+   
+  </tr>
+  <% @restaurants.each do |restaurant| %>
+    <tr>
+      <td><%= restaurant.name %></td>
+      <td><%= restaurant.address %></td>
+      <td><%= restaurant.reviews.count %></td>
+      <td><% restaurant.cuisines.each do |c|  %>
+            <%= c.name %>
+          <% end %>
+      </td>
+      <td><%= pluralize restaurant.reservations.count, 'person' %></td>
+
+
+      <td><%= link_to 'Show', restaurant %></td>
+      <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+      <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+
+</table>

@@ -12,7 +12,7 @@
   <tbody>
     <% @cuisines.each do |cuisine| %>
       <tr>
-        <td><%= cuisine.restaurant %></td>
+        <td><%= cuisine.restaurants %></td>
         <td><%= cuisine.name %></td>
         <td><%= link_to 'Show', cuisine %></td>
         <td><%= link_to 'Edit', edit_cuisine_path(cuisine) %></td>

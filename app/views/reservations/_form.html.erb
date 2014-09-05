@@ -19,6 +19,10 @@
     <%= f.label :party_size %>
     <%= f.number_field :party_size, in: 1.0..20.0 %>
   </div>
+  <div class="field">
+    <%= f.label :booking %>
+    <%= f.datetime_select :booking %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

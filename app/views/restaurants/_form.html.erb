@@ -19,6 +19,10 @@
     <%= f.label :address %><br>
     <%= f.text_field :address %>
   </div>
+    <div class="field">
+    <%= f.label :cuisines %><br>
+    <%= collection_check_boxes(:restaurant, :cuisine_ids, Cuisine.all, :id, :name) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -27,6 +27,11 @@
         <%= link_to reservations_path do %>
           <button type='button' class='btn btn-default'>Your Reservations</button>
         <% end %>
+        <% if user_signed_in? %>
+          <%= render 'shared/nearby' %>
+        <% else %>
+          <p>Log in to see nearby restaurants</p>
+        <% end %>
     </div>
    </div> <!-- end of row -->
       </main>
