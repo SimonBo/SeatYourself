@@ -23,6 +23,9 @@
         <%= render 'shared/user_manage'  %>
         <%= link_to new_reservation_path do %>
           <button type='button' class='btn btn-default'>Seat Yourself!</button>
+        <% end %><br />
+        <%= link_to reservations_path do %>
+          <button type='button' class='btn btn-default'>Your Reservations</button>
         <% end %>
     </div>
    </div> <!-- end of row -->
