@@ -14,6 +14,7 @@
   <div class="field">
     <%= f.label :restaurant  %>
     <%= collection_select(:reservation, :restaurant_id, Restaurant.all, :id, :name) %>
+  </div>
   <div class="field">
     <%= f.label :party_size %>
     <%= f.number_field :party_size, in: 1.0..20.0 %>
