@@ -1,20 +1,26 @@
 <h1>Restaurants</h1>
 
- 
+  <table>
+    <tr>
+      <th><%= sortable "Name", :sort => "name" %></th>
+      <th><%= sortable "Address", :sort => "address" %></th>
+      <th>Reviews</th>
+     
+    </tr>
     <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= restaurant.reviews.count %></td>
       
-        <h5>Name: <%= restaurant.name %></h5>
-        <h5>Address: <%= restaurant.address %>
-        <h5>Reviews: <%= restaurant.reviews.count %></h5>
-        
 
 
-        <%= link_to 'Show', restaurant %>
-        <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
-        <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
-      
+        <td><%= link_to 'Show', restaurant %></td>
+        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
 
-<br>
+  </table>
 
 <%= link_to 'New Restaurant', new_restaurant_path %>
