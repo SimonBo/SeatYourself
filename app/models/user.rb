@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   geocoded_by :ip_address
   after_validation :geocode
+  # , :if => :ip_address_changed?
    
   def to_s
     "#{email}"
