@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :booking %>
-    <%= f.datetime_select :booking %>
+    <%= f.datetime_select :booking, :default => {:hour => 17, :minute => 0}  %>
   </div>
   <div class="actions">
     <%= f.submit %>

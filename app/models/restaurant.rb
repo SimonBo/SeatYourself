@@ -17,7 +17,7 @@ class Restaurant < ActiveRecord::Base
     "#{name}"
   end
 
-  
+
 
   def available?(party_size, booking)
     reserved = reservations.where(booking: booking).sum(:party_size)
