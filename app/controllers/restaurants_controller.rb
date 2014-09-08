@@ -5,12 +5,15 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
-    
-  if params[:search].present?
-    @restaurants = Restaurant.near(params[:search], 50)
-  else
-    @restaurants = Restaurant.order(sort_column + " " + sort_direction)
-  end
+    @restaurants = Restaurant.all
+
+
+    @hash = Gmaps4rails.build_markers(@restaurants) do |restaurant, marker|
+      marker.lat restaurant.latitude
+      marker.lng restaurant.longitude
+      marker.infowindow restaurant.name
+      marker.json({ title: restaurant.name })
+    end
 
   end
 
