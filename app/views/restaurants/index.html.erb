@@ -35,15 +35,60 @@
 
 <%= link_to 'New Restaurant', new_restaurant_path %>
 
+<p>Your location</p>
+<button onclick="getLocation()">Try It</button>
+<p id="demo">...</p>
+
 <div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+  <div id="map" style='width: 800px; height: 400px;' data-restaurants="<%= @hash.to_json %>"></div>
 </div>
 
-<script type="text/javascript">
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
+
+<!-- USER LOCATION -->
+<script>
+$(document).ready(function(){ 
+var x = document.getElementById("demo");
+var rubyHash = JSON.parse($('#map').attr('data-restaurants'));
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+
+}
+
+function showPosition(position) {
+
+    rubyHash.push({"lat":position.coords.latitude,"lng":position.coords.longitude,"infowindow":"You","title":"You-title"});
+
+    x.innerHTML="Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude; 
+
+     // buildMap(position.coords.longitude, lat);
+    //center map on user lat/long
+    //Make AJAX call to server for nearby restaurants
+    //Add new markers to map
+    //Extend bounds with new markers
+    //Fit map to bounds
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(rubyHash);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
 });
+}
+
+getLocation();
+
+
+
+});
+</script>
+
+<!-- RENDER MAP -->
+<script type="text/javascript">
+
+
 </script>

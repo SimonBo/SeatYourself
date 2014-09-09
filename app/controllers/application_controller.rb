@@ -5,9 +5,11 @@ class ApplicationController < ActionController::Base
   before_filter :get_user_ip
 
   def get_user_ip
-    current_user.ip_address = "76.10.128.136"
-    current_user.latitude = 43.8566
-    current_user.longitude = -79.5111
-    current_user.save
+    if current_user
+      current_user.ip_address = "76.10.128.136"
+      current_user.latitude = 43.8566
+      current_user.longitude = -79.5111
+      current_user.save
+    end
   end
 end
